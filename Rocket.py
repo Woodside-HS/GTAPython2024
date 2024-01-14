@@ -5,10 +5,12 @@ class OBJECT_OT_AddSphere(bpy.types.Operator):
     bl_label = "Add Rocket"
     
     def execute(self, context):
-        bpy.ops.mesh.primitive_uv_sphere_add(location = (1,0,0))
-        bpy.ops.mesh.primitive_uv_sphere_add(location = (-1,0,0))
+        bpy.ops.mesh.primitive_uv_sphere_add(location = (1,0,0), scale = (1.5, 1.5, 1.5))
+        bpy.ops.mesh.primitive_uv_sphere_add(location = (-1,0,0), scale = (1.5, 1.5, 1.5))
         bpy.ops.mesh.primitive_cylinder_add(enter_editmode=False, align='WORLD', location=(0, 0, 2), scale=(1, 1, 2))
         bpy.ops.mesh.primitive_uv_sphere_add(location = (0,0,4))
+        bpy.ops.object.select_all(action='SELECT')
+        bpy.ops.object.shade_smooth()
 
         return {'FINISHED'}
 
@@ -52,4 +54,5 @@ def unregister():
     
 if __name__ == "__main__":
     register()
+    
     
